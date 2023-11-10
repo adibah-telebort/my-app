@@ -1,8 +1,8 @@
 import * as React from 'react';
 import { StyleSheet, Text, View, } from 'react-native';
 // import { createNativeStackNavigator } from '@react-navigation/native-stack';
-import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { NavigationContainer } from '@react-navigation/native';
+import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import IonIcons from 'react-native-vector-icons/IonIcons';
 
 // Screens
@@ -13,21 +13,41 @@ import ToDo from './screens/todo';
 const homeName = 'Home';
 const todoName = 'ToDo';
 
-const screens = {
-    Home: {
-        screen: Home
-    },
-    ToDo: {
-        screen: ToDo
-    }
-}
+const Tab = createBottomTabNavigator()
 
-const HomeStack = createNativeStackNavigator();
+
+// const screens = {
+//     Home: {
+//         screen: Home
+//     },
+//     ToDo: {
+//         screen: ToDo
+//     }
+// }
+
+// const HomeStack = createNativeStackNavigator();
 
 export default function MainContainer() {
     return (
-        <View>
-            <Text>Welcome!</Text>
-        </View>
+        <NavigationContainer>
+            <Tab.Navigator
+                initialRouteName={homeName}
+                screenOptions={({ route }) => ({
+                    tabBarIcon: ({ focused, color, size }) => {
+                        let iconName;
+                        let rn = route.name;
+
+                        if (rn === homeName) {
+                            iconName = focused ? 'home' : 'home-outline'
+                        } else if (rn === todoName) {
+                            iconName = focused ? 'list' : 'list-outline'
+                        }
+
+                        return <IonIcons name={iconName} size={size} color={color} />
+                    }
+                })}>
+
+            </Tab.Navigator>
+        </NavigationContainer>
     )
 }

@@ -5,7 +5,7 @@ import * as React from "react";
 // import { AppLoading } from 'expo';
 // import Home from './routes/screens/home';
 // Hello Adibah
-import MainContainer from "./routes/MainContainer";
+import MainContainer from "./routes/MainContainer.js";
 
 function App() {
   return <MainContainer />;

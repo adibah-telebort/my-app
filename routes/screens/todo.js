@@ -4,7 +4,7 @@ import { StyleSheet, Text, View, } from 'react-native';
 export default function ToDoScreen({ navigation }) {
     return (
         <View style={styles.container}>
-            <Text>To Do Screen</Text>
+            <Text onPress={() => navigation.navigate('Home')}>To Do Screen</Text>
         </View>
     )
 }
